@@ -1,25 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { closeDB, connectDB } from "../../dbCon.mjs";
-
-// Interfaces for the response format
-interface swiftCodeDetails {
-    address: string;
-    bankName: string;
-    countryISO2: string;
-    countryName: string;
-    isHeadquarter: boolean;
-    swiftCode: string;
-    branches?: Branch[];
-}
-interface Branch {
-    address: string;
-    bankName: string;
-    countryISO2: string;
-    countryName: string;
-    isHeadquarter: boolean;
-    swiftCode: string;
-}
-
+import { connectDB } from "../../dbCon.mjs";
 
 // POST request handler for adding a new SWIFT code entry
 export async function POST(request: NextRequest) {

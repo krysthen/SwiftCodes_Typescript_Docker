@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { closeDB, connectDB } from "../../../../dbCon.mjs";
+import { connectDB } from "../../../../dbCon.mjs";
 
 // Interfaces for the response format
 interface SwiftCode {
@@ -20,7 +20,7 @@ interface ResponseFormat {
 export async function GET(
     request: NextRequest, { params }: { params: { countryISO2: string } },
 ) {
-    const countryISO2 = params.countryISO2.toUpperCase();
+    const {countryISO2} = await params;
 
     console.log("Country ISO2 code:", countryISO2);
     // Check if the country ISO2 code is provided

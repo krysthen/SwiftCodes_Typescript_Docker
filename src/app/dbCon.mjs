@@ -14,14 +14,15 @@ export async function connectDB() {
     const client = new MongoClient(uri);
     await client.connect();
     //console.log("Connected to MongoDB");
-
     const db = client.db(dbName);
     cachedClient = client;
     cachedDb = db;
 
+    //const collections = await db.listCollections().toArray();
+    //collections.forEach(collection => console.log(collection.name));
+    //Get first collection from swiftsCollections
+
+    
+
     return { client, db };
 }
-//export async function closeDB() {
-//    await cachedClient.close();
-//    console.log("Closed MongoDB connection");
-//}

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { closeDB, connectDB } from "../../../dbCon.mjs";
+import { connectDB } from "../../../dbCon.mjs";
 
 // Interfaces for the response format
 interface swiftCodeDetails {
@@ -36,7 +36,8 @@ export async function GET(
     // Check if the SWIFT code is 11 characters long
     if (swiftCode.length !== 11) {
         return NextResponse.json({
-            message: "Swift code must be 11 characters long."}, { status: 200 });
+            message: "Swift code must be 11 characters long."
+        }, { status: 200 });
     }
 
     // Connect to the database and fetch the SWIFT code details
@@ -144,5 +145,5 @@ export async function DELETE(
         // Return an error response
         return NextResponse.json({ message: "Error deleting SWIFT code, try again." }, { status: 500 });
     }
-    
+
 };
