@@ -1,0 +1,26 @@
+meta {
+  name: ADD SWIFT
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/v1/swift-codes
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "address": "testAddress",
+    "bankName": "testNameBank",
+    "countryISO2": "123ISO2",
+    "countryName": "testCountryName",
+    "isHeadquarter": true,
+    "swiftCode": "12341671XXX"
+  }
+}

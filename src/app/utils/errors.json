@@ -1,0 +1,82 @@
+{
+    "errors": [
+        {
+            "code": 400,
+            "message": "Bad Request",
+            "description": "Żądanie zawiera nieprawidłowe dane lub jest źle sformułowane.",
+            "solution": "Sprawdź strukturę danych wejściowych."
+        },
+        {
+            "code": 401,
+            "message": "Unauthorized",
+            "description": "Brak uprawnień do wykonania tej operacji.",
+            "solution": "Upewnij się, że token uwierzytelniający jest prawidłowy."
+        },
+        {
+            "code": 403,
+            "message": "Forbidden",
+            "description": "Dostęp do zasobu jest zabroniony.",
+            "solution": "Sprawdź swoje uprawnienia i role."
+        },
+        {
+            "code": 404,
+            "message": "Not Found",
+            "description": "Żądany zasób nie został znaleziony.",
+            "solution": "Zweryfikuj poprawność adresu URL."
+        },
+        {
+            "code": 405,
+            "message": "Method Not Allowed",
+            "description": "Metoda HTTP nie jest obsługiwana przez ten zasób.",
+            "solution": "Sprawdź dokumentację API."
+        },
+        {
+            "code": 409,
+            "message": "Conflict",
+            "description": "Konflikt z istniejącymi danymi, np. duplikat.",
+            "solution": "Zaktualizuj dane lub zmień żądanie."
+        },
+        {
+            "code": 422,
+            "message": "Unprocessable Entity",
+            "description": "Żądanie ma poprawny format, ale dane są nieprawidłowe.",
+            "solution": "Sprawdź poprawność danych wejściowych."
+        },
+        {
+            "code": 429,
+            "message": "Too Many Requests",
+            "description": "Limit żądań został przekroczony.",
+            "solution": "Spróbuj ponownie za chwilę."
+        },
+        {
+            "code": 500,
+            "message": "Internal Server Error",
+            "description": "Wewnętrzny błąd serwera.",
+            "solution": "Spróbuj ponownie później lub skontaktuj się z administratorem."
+        },
+        {
+            "code": 502,
+            "message": "Bad Gateway",
+            "description": "Serwer pośredniczący otrzymał nieprawidłową odpowiedź od serwera docelowego.",
+            "solution": "Sprawdź konfigurację serwera."
+        },
+        {
+            "code": 503,
+            "message": "Service Unavailable",
+            "description": "Serwis jest tymczasowo niedostępny.",
+            "solution": "Spróbuj ponownie za chwilę."
+        },
+        {
+            "code": 504,
+            "message": "Gateway Timeout",
+            "description": "Serwer pośredniczący nie otrzymał odpowiedzi w czasie.",
+            "solution": "Sprawdź czas odpowiedzi serwera docelowego."
+        },
+        {
+            "code": 900,
+            "message": "Custom Application Error",
+            "description": "Niestandardowy błąd aplikacji.",
+            "solution": "Skontaktuj się z zespołem wsparcia."
+        }
+    ]
+}

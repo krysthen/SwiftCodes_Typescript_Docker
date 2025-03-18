@@ -2,17 +2,26 @@
   "name": "ts-swift",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "mongodb": "^6.14.2",
+    "mongoose": "^8.12.1",
     "next": "15.2.2"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19"
-  }
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^20.17.24",
+    "@types/react": "^19",
+    "typescript": "^5.8.2"
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
