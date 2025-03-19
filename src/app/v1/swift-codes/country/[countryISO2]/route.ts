@@ -17,10 +17,9 @@ interface ResponseFormat {
 }
 // GET request handler for the SWIFT code details for a country ISO2 code
 // This function fetches the details of a SWIFT code from the database for a given country ISO2 code
-export async function GET(
-    request: NextRequest, { params }: { params: { countryISO2: string } },
-) {
-    const {countryISO2} = await params;
+export async function GET(request: NextRequest, { params }: { params: Promise<{ countryISO2: string }> }) {
+
+    let countryISO2 = await (await params).countryISO2;
 
     console.log("Country ISO2 code:", countryISO2);
     // Check if the country ISO2 code is provided

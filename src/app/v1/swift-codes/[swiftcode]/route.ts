@@ -22,11 +22,9 @@ interface Branch {
 
 // GET request handler for the SWIFT code details
 // This function fetches the details of a SWIFT code from the database
-export async function GET(
-    request: NextRequest, { params }: { params: { swiftcode: string } }
-) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ swiftcode: string }> }) {
 
-    let swiftCode = params.swiftcode;
+    let swiftCode = (await params).swiftcode;
     //console.log("SWIFT code:", swiftCode);
 
     // Check if the SWIFT code is provided
@@ -101,10 +99,9 @@ export async function GET(
 
 // DELETE request handler for the SWIFT code
 // This function deletes a SWIFT code from the database
-export async function DELETE(
-    request: NextRequest, { params }: { params: { swiftcode: string } }
-) {
-    let swiftCode = params.swiftcode;
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ swiftcode: string }> }) {
+    
+    let swiftCode = await (await params).swiftcode;
 
     // Check if the SWIFT code is provided
     if (!swiftCode) {
