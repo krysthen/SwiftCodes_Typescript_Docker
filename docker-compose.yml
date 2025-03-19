@@ -1,23 +1,23 @@
 services:
   mongodb:
-    image: mongo:latest  # Używamy oficjalnego obrazu MongoDB
-    container_name: mongodb  # Nazwa kontenera
+    image: mongo:latest
+    container_name: mongodb
     ports:
-      - "27017:27017"  # Mapowanie portu 27017 w kontenerze na port 27017 na hoście
+      - "27017:27017"
     volumes:
-      - mongodb_data:/data/db  # Zabezpieczenie danych w kontenerze
+      - mongodb_data:/data/db
     networks:
       - app_network
 
   app:
-    build: .  # Jeśli masz Dockerfile dla swojej aplikacji
-    container_name: app  # Nazwa kontenera dla aplikacji
+    build: .
+    container_name: app
     ports:
-      - "8080:8080"  # Mapowanie portu 8080 w kontenerze na port 8080 na hoście
+      - "8080:8080"
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swifts  # URI MongoDB do połączenia
+      - MONGO_URI=mongodb://mongodb:27017/swifts
     depends_on:
-      - mongodb  # Gwarantujemy, że MongoDB będzie działało przed aplikacją
+      - mongodb
     networks:
       - app_network
 
