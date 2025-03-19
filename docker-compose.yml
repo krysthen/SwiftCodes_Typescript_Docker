@@ -1,25 +1,30 @@
 services:
-  nextjs:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  mongodb:
+    image: mongo:latest  # Używamy oficjalnego obrazu MongoDB
+    container_name: mongodb  # Nazwa kontenera
     ports:
-      - "8080:8080"         # Mapowanie portów (kontener:host)
-    environment:
-      - PORT=8080           # Port aplikacji Next.js
-      - MONGODB_URI=mongodb://mongo:27017/swifts  # Bez uwierzytelniania
-    depends_on:
-      - mongo               # Uruchomienie MongoDB przed aplikacją Next.js
-    restart: always         # Automatyczny restart w przypadku awarii
-
-  mongo:
-    image: mongo:6.0        # Wersja obrazu MongoDB
-    restart: always         # Automatyczny restart w przypadku awarii
-    container_name: mongodb # Nazwa kontenera dla MongoDB
-    ports:
-      - "27017:27017"       # Mapowanie portów MongoDB (kontener:host)
+      - "27017:27017"  # Mapowanie portu 27017 w kontenerze na port 27017 na hoście
     volumes:
-      - mongo_data:/data/db # Trwałe dane w wolumenie
+      - mongodb_data:/data/db  # Zabezpieczenie danych w kontenerze
+    networks:
+      - app_network
+
+  app:
+    build: .  # Jeśli masz Dockerfile dla swojej aplikacji
+    container_name: app  # Nazwa kontenera dla aplikacji
+    ports:
+      - "8080:8080"  # Mapowanie portu 8080 w kontenerze na port 8080 na hoście
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/swifts  # URI MongoDB do połączenia
+    depends_on:
+      - mongodb  # Gwarantujemy, że MongoDB będzie działało przed aplikacją
+    networks:
+      - app_network
 
 volumes:
-  mongo_data:
+  mongodb_data:
+    driver: local
+
+networks:
+  app_network:
+    driver: bridge
