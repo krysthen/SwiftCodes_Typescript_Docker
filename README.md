@@ -21,7 +21,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 
 
 ### Retrieve details of a single SWIFT code whether for a headquarters or branches.
-```http
+```
   GET /v1/swift-codes/{swift-code}
 ```
 
@@ -40,7 +40,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 | `500 Internal Server Error` | `Error fetching SWIFT code details`|
 
 #### Response structure:
-```json
+```
 {
     "address": string,
     "bankName": string,
@@ -67,7 +67,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 }
 ```
 #### Response Structure for branch swift code: 
-```json
+```
 {
     "address": string,
     "bankName": string,
@@ -80,7 +80,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 
 
 ### Return all SWIFT codes with details for a specific country (both headquarters and branches).
-```http
+```
   GET /v1/swift-codes/country/{countryISO2code}
 ```
 
@@ -98,7 +98,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 | `500 Internal Server Error` | `Error fetching SWIFT code details`|
 
 #### Response structure:
-```json
+```
 {
     "countryISO2": string,
     "countryName": string,
@@ -123,7 +123,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 
 
 ### Adds new SWIFT code entries to the database for a specific country.
-```http
+```
   POST /v1/swift-codes/{swift-code}
 ```
 
@@ -134,19 +134,20 @@ Add to Headers:
 
 And body (Request structure below)
 
-#### Request Structure :
-```json
+#### Request Structure:
+
+```
 {
     "address": string,
     "bankName": string,
     "countryISO2": string,
     "countryName": string,
-    “isHeadquarter”: bool,
+    "isHeadquarter": bool,
     "swiftCode": string,
 }
 ```
 #### Response structure:
-```json
+```
 {
     "message": string,
 }
@@ -162,7 +163,7 @@ And body (Request structure below)
 
 
 ### Deletes swift-code data if swiftCode matches the one in the database.
-```http
+```
   DELETE /v1/swift-codes/{swift-code}
 ```
 
@@ -181,7 +182,7 @@ And body (Request structure below)
 | `500 Internal Server Error` | `Error deleting SWIFT code, try again.`|
 
 #### Response structure:
-```json
+```
 {
     "message": string,
 }
@@ -189,6 +190,3 @@ And body (Request structure below)
 ## Support
 
 For support, E-mail krystianhendzel2812@gmail.com
-
-
-
