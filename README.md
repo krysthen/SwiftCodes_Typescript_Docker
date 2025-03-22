@@ -20,7 +20,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
    
 ## Running tests
 ```
-  npx test
+  npx jest
 ```
 **Remember! When test runs the database will be cleared**
 
