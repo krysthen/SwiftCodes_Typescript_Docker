@@ -1,6 +1,7 @@
 
 # SWIFT CODE API
 A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier of a bank's branch or headquarter. It ensures that international wire transfers are directed to the correct bank and branch, acting as a bank's unique address within the global financial network.
+
 ## Installation
 
 #### Prerequisites:
@@ -16,6 +17,12 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
     docker-compose up --build
     ```
 5. Once the project is up and running, you can access it by visiting `http://localhost:8080` in your browser.
+   
+## Running tests
+```
+  npx test
+```
+**Remember! When test runs the database will be cleared**
 
 ## API Reference
 
