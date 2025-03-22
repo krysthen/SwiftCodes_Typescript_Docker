@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "../../../../dbCon.mjs";
+import { connectDB } from "../../../../dbCon";
 
 // Interfaces for the response format
 interface SwiftCode {
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     let countryISO2 = await (await params).countryISO2;
 
-    console.log("Country ISO2 code:", countryISO2);
+    //console.log("Country ISO2 code:", countryISO2);
     // Check if the country ISO2 code is provided
     if (!countryISO2) {
         return NextResponse.json({ message: "Country ISO2 code not provided" }, { status: 400 });
@@ -34,9 +34,16 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     try {
         const { db } = await connectDB();
         // Fetch the SWIFT codes for the given country ISO2 code
-        const swiftCodes: SwiftCode[] = await db.collection("swiftsCollections")
+        const swiftCodes: SwiftCode[] = (await db.collection("swiftsCollections")
             .find({ countryISO2 })
-            .toArray();
+            .toArray()).map(doc => ({
+                address: doc.address,
+                bankName: doc.bankName,
+                countryISO2: doc.countryISO2,
+                countryName: doc.countryName,
+                isHeadquarter: doc.isHeadquarter,
+                swiftCode: doc.swiftCode,
+            }));
         // Check if the SWIFT codes are available for the given country ISO2 code
         if (!swiftCodes || swiftCodes.length === 0) {
             return NextResponse.json({ message: "No data found for the given country ISO2 code" }, { status: 404 });
@@ -57,7 +64,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
         //console.log("Country ISO2 code details:", response);
         // Return the response
-        return NextResponse.json(response);
+        return NextResponse.json(response, { status: 200 });
     } catch (error) {
         //console.error("Error fetching countryISO2 code details:", error);
         // Return an error response

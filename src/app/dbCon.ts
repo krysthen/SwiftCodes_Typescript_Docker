@@ -1,10 +1,12 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.DB_URI || "mongodb://mongodb:27017";
+const uri = process.env.DB_URI || "mongodb://localhost:27017";
 const dbName = "swifts";
 
-let cachedClient = null;
-let cachedDb = null;
+let cachedClient: MongoClient | null = null;
+import { Db } from "mongodb";
+
+let cachedDb: Db | null = null;
 
 export async function connectDB() {
     if (cachedClient && cachedDb) {

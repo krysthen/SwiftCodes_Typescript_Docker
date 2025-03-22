@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "../../dbCon.mjs";
+import { connectDB } from "../../dbCon";
 
 // POST request handler for adding a new SWIFT code entry
 export async function POST(request: NextRequest) {

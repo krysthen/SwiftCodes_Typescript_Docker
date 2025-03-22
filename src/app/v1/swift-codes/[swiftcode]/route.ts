@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "../../../dbCon.mjs";
+import { connectDB } from "../../../dbCon";
 
 // Interfaces for the response format
 interface swiftCodeDetails {
@@ -89,7 +89,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         };
 
         // Return the response with the SWIFT code details
-        return NextResponse.json(formattedResponse);
+        return NextResponse.json(formattedResponse, { status: 200 });
     } catch (error) {
         //console.error("Error fetching SWIFT code details:", error);
         return NextResponse.json({ message: "Error fetching SWIFT code details" }, { status: 500 });
@@ -118,7 +118,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
         const { db } = await connectDB();
 
         swiftCode = swiftCode.toUpperCase();
-        console.log("SWIFT code to delete:", swiftCode);
+        //console.log("SWIFT code to delete:", swiftCode);
 
         const existingCode = await db.collection("swiftsCollections").findOne({ swiftCode });
 
@@ -135,7 +135,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
         return NextResponse.json({
             // Return a success message
             message: "SWIFT code has been deleted (" + swiftCode + ")."
-        });
+        }, { status: 200 });
 
     } catch (error) {
         //console.error("Error deleting SWIFT code:", error);
