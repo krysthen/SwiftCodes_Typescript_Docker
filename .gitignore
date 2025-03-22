@@ -39,4 +39,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 # Data
-data/
+data/*
