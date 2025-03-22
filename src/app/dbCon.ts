@@ -1,11 +1,12 @@
 import { MongoClient } from "mongodb";
+import { Db } from "mongodb";
 
-const uri = process.env.DB_URI || "mongodb://localhost:27017";
+// Uri change when using docker or local
+//const uri = process.env.DB_URI || "mongodb://localhost:27017";
+const uri = process.env.DB_URI || "mongodb://mongodb:27017";
 const dbName = "swifts";
 
 let cachedClient: MongoClient | null = null;
-import { Db } from "mongodb";
-
 let cachedDb: Db | null = null;
 
 export async function connectDB() {
