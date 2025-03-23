@@ -8,15 +8,28 @@ describe("Integration Test: GET /v1/swift-codes/[swiftcode]", () => {
         const connection = await connectDB();
         db = connection.db;
 
-        // Insert the test SWIFT code
-        await db.collection("swiftsCollections").insertOne({
-            address: "Test Address 2",
-            bankName: "Test Bank 2",
-            countryISO2: "PL",
-            countryName: "Poland",
-            isHeadquarter: false,
-            swiftCode: "12345678901".toUpperCase(),
-        });
+        // Clean up the collection before inserting test data
+        await db.collection("swiftsCollections").deleteMany({});
+
+        // Insert the correct test data
+        await db.collection("swiftsCollections").insertMany([
+            {
+                address: "Test Address 1",
+                bankName: "Test Bank 1",
+                countryISO2: "PL",
+                countryName: "Poland",
+                isHeadquarter: true,
+                swiftCode: "12345678905",
+            },
+            {
+                address: "Test Address 2",
+                bankName: "Test Bank 2",
+                countryISO2: "PL",
+                countryName: "Poland",
+                isHeadquarter: false,
+                swiftCode: "12345678901",
+            },
+        ]);
     });
 
     afterAll(async () => {
