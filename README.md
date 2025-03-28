@@ -14,7 +14,7 @@ A SWIFT code, also known as a Bank Identifier Code (BIC), is a unique identifier
 3. Navigate to the project directory in the terminal.
 4. Run the following command to build and start the project:
     ```bash
-    docker-compose up --build
+    docker-compose up
     ```
 5. Once the project is up and running, you can access it by visiting `http://localhost:8080` in your browser.
    
